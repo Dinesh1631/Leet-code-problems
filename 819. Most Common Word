@@ -1,0 +1,26 @@
+class Solution {
+    public String mostCommonWord(String paragraph, String[] banned) {
+        String[] strs = paragraph.replaceAll("\\W+" , " ").toLowerCase().split(" ");
+        HashMap<String,Integer> mp = new HashMap<>();
+        ArrayList<String> arr = new ArrayList<>();
+        String ans = "";
+        int occur = 0;
+        for(String i : banned) arr.add(i);
+        for(String i : strs){
+            mp.put(i,mp.getOrDefault(i,0)+1);
+        }
+       for(Map.Entry<String,Integer> e : mp.entrySet())
+       {
+            if(arr.contains(e.getKey())) continue;
+            else{
+                if(e.getValue()>occur){
+                    occur = e.getValue();
+                    ans = e.getKey();
+                }
+            }
+       }
+       System.out.println(mp);
+        System.out.println(occur);
+    return ans; 
+    }
+}
