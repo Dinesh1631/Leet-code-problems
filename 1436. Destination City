@@ -1,0 +1,13 @@
+class Solution {
+    public String destCity(List<List<String>> paths) {
+        HashSet<String> st = new HashSet<>();
+        for(List<String> arr : paths){
+           st.add(arr.get(0));
+        }
+         for(List<String> arr : paths){
+             String dt = arr.get(1);
+             if(!st.contains(dt)) return dt;
+        }
+        return " ";
+    }
+}
